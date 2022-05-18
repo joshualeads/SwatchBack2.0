@@ -17,12 +17,13 @@ const LatestStories = (props) => {
 
     return(
         <Story 
-            image={`http://localhost:1337${cover.url}`}
+            image={`${process.env.STRAPI_CMS_DOMAIN}${cover.url}`}
             imageAlt = {cover.alternativeText}
             title = {storyInfo.title}
             description = {storyInfo.description}
             tags={getStoryTags(storyInfo.categories.data)}
             author={storyInfo.author.data.attributes.name}
+            authorAvatar={`${process.env.STRAPI_CMS_DOMAIN}`+`${storyInfo.author.data.attributes.avatar.data.attributes.url}`}
             slug={storyInfo.slug}
             date={storyInfo.updatedAt}
             storyType={"latestStory"}

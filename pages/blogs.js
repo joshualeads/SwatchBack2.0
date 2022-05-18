@@ -65,42 +65,42 @@ const Blogs = ({ articles, categories, trending, topStories, recentStories }) =>
 
 export async function getStaticProps() {
     // Run API calls in parallel
+
+    const queryFilter = {
+        populate: {
+            cover: {
+                fields: ["url", "name", "alternativeText", "caption"]
+            },
+            author: {
+                fields: ["name","email"],
+                populate: {
+                    avatar: {
+                        fields: ["name", "alternativeText", "url"]
+                    }
+                }
+            },
+            categories: {
+                populate: "*"
+            },
+        },
+        filter: {
+            categories: {
+                slug: {
+                    $eq: "trending"
+                }
+            }
+        }
+    };
+
     const [articlesRes, categoriesRes, trendingRes, topStoriesRes, recentStoriesRes,] = await Promise.all([
         fetchAPI("/articles", { populate: "*" }),
         fetchAPI("/categories", { populate: "*" }),
         // Get Trending Blogs
-        fetchAPI("/articles", {
-            populate: "*",
-            filter: {
-                categories: {
-                    slug: {
-                        $eq: "trending"
-                    }
-                }
-            }
-        }),
+        fetchAPI("/articles", queryFilter),
         // Get Top Stories Blog
-        fetchAPI("/articles", {
-            populate: "*",
-            filter: {
-                categories: {
-                    slug: {
-                        $eq: "top-stories"
-                    }
-                }
-            }
-        }),
+        fetchAPI("/articles", queryFilter),
         // Get Recent Stories Blog
-        fetchAPI("/articles", {
-            populate: "*",
-            filter: {
-                categories: {
-                    slug: {
-                        $eq: "recent-stories"
-                    }
-                }
-            }
-        })
+        fetchAPI("/articles", queryFilter)
     ])
 
     return {

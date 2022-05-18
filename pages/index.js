@@ -44,7 +44,7 @@ export default function Home() {
           >
             <h2>Sign Up &rarr;</h2>
             <p>
-              Instantly join our family.
+              Instantly join our family and have fun
             </p>
           </a>
         </div>

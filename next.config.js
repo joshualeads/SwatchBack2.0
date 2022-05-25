@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    SHOPIFY_STOREFRONT_ACCESSTOKEN:'544244918c7e36ff08a00d337fdd1734',
-    SHOPIFY_STORE_DOMAIN:'joshuajabakumar.myshopify.com',
+    SHOPIFY_STOREFRONT_ACCESSTOKEN:'352c4e85a0242da524eb24ed9cce7c1d',
+    SHOPIFY_STORE_DOMAIN:'swatchback.myshopify.com',
     STRAPI_CMS_DOMAIN:'http://localhost:1337'
   }
 }

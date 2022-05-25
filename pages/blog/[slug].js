@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, HStack, Tag, Image, Text, Link, Heading, requiredChakraThemeKeys, Stack, Container, Divider } from '@chakra-ui/react';
-import BlockType from "../../components/global/Blog/BlockType";
+import BlockType from "../../components/Blog/BlockType";
 
 import { fetchAPI } from '../../lib/strapiCMS';
 

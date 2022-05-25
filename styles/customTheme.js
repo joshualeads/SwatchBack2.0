@@ -16,15 +16,25 @@ const customTheme = extendTheme({
         },
     },
     styles: {
-        global: {
+        global: (props) => ({
             '.sb_container': {
                 px: {
                     base: '2%',
                     md: '5%',
                     lg: '10%'
                 }
+            },
+            '.template': {
+                mb: {
+                    base: '30%',
+                    md: '10%',
+                    lg: '10%'
+                }
+            },
+            a: {
+                textDecoration: 'none'
             }
-        }
+        })
     }
 })
 

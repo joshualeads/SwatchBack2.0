@@ -7,7 +7,7 @@ const Layout = ({children}) => {
         <>
             <Nav />
 
-            <main>
+            <main className="template">
                 {children}
             </main>
 

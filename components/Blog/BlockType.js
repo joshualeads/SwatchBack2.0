@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import {Stack, Divider, Image, Box, Heading, Text, Container} from "@chakra-ui/react";
-import Carousel from "../../Carousel";
+import {Stack, Divider, Image, Heading, Text, Container} from "@chakra-ui/react";
+import Carousel from "../Carousel";
 
 const BlockType = (props) => {
     

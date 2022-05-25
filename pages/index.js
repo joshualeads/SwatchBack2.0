@@ -20,12 +20,12 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="/" className={styles.card}>
+          <a href="/foundation" className={styles.card}>
             <h2>Foundation &rarr;</h2>
             <p>Find in-depth information about Foundation Products.</p>
           </a>
 
-          <a href="/" className={styles.card}>
+          <a href="/dupes" className={styles.card}>
             <h2>Dupes &rarr;</h2>
             <p>Want to know more about Dupes and its types?</p>
           </a>

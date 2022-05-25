@@ -1,11 +1,10 @@
 import React from 'react';
-//import Image from 'next/image';
+import Link from 'next/link';
 import {
     Box,
     Flex,
     Avatar,
     HStack,
-    Link,
     IconButton,
     Button,
     Menu,
@@ -18,7 +17,8 @@ import {
     Stack,
     Heading
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, AddIcon  } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon  } from '@chakra-ui/icons';
+import styles from './Nav.module.css';
 
 const Links = [
     { 'name': 'Foundation', 'url': '/foundation' }, 
@@ -36,6 +36,7 @@ const NavLink = (props) => (
             textDecoration: 'none',
             bg: useColorModeValue('gray.200', 'gray.700'),
         }}
+        className={styles.navLink}
         href={props.url}>
         {props.children}
     </Link>

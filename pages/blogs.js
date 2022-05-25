@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Stack, Box, Divider, Heading } from '@chakra-ui/react';
-import TrendingStory from '../components/global/Blog/TrendingStory';
 
 import { fetchAPI } from "../lib/strapiCMS";
-import LatestStories from '../components/global/Blog/LatestStories';
-import TopStories from '../components/global/Blog/TopStories';
+import LatestStories from '../components/Blog/LatestStories';
+import TopStories from '../components/Blog/TopStories';
+import TrendingStory from '../components/Blog/TrendingStory';
 
 const Blogs = ({ articles, categories, trending, topStories, recentStories }) => {
 

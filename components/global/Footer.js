@@ -1,20 +1,22 @@
 import React from 'react';
+import Link from 'next/link';
 import {
     Box,
     chakra,
     Container,
-    Link,
+    //Link,
     Stack,
     Text,
     useColorModeValue,
     VisuallyHidden,
-    Heading
+    Heading,
+    //textDecoration
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Logo = (props) => {
     return (
-        <Link href='/'>{props.children}</Link>
+        <Link href='/' _hover={{textDecoration: 'none'}}>{props.children}</Link>
     );
 };
 
@@ -45,7 +47,11 @@ const Footer = () => {
     return (
         <footer>
             <Box
+                position={'fixed'}
+                width={"100%"}
+                bottom={"0"}
                 className={'sb_container'}
+                zIndex={'99'}
                 bg={useColorModeValue('gray.50', 'gray.900')}
                 color={useColorModeValue('gray.700', 'gray.200')}>
                 <Container
@@ -57,17 +63,17 @@ const Footer = () => {
                     spacing={4}
                     justify={{ base: 'center', md: 'space-between' }}
                     align={{ base: 'center', md: 'center' }}>
-                    <Logo ><Heading fontSize={"3xl"}>SwatchBack</Heading></Logo>
+                    <Logo><Heading fontSize={"3xl"} _hover={{cursor:'pointer'}}>SwatchBack</Heading></Logo>
                     <Text>© 2022 SwatchBack. All rights reserved</Text>
                     <Stack direction={'row'} spacing={6}>
-                        <SocialButton label={'Twitter'} href={'#'}>
-                            <FaTwitter />
+                        <SocialButton label={'Twitter'} href={'#'} >
+                            <FaTwitter  color={useColorModeValue('gray.700', 'gray.200')} />
                         </SocialButton>
                         <SocialButton label={'YouTube'} href={'#'}>
-                            <FaYoutube />
+                            <FaYoutube color={useColorModeValue('gray.700', 'gray.200')} />
                         </SocialButton>
                         <SocialButton label={'Instagram'} href={'#'}>
-                            <FaInstagram />
+                            <FaInstagram color={useColorModeValue('gray.700', 'gray.200')} />
                         </SocialButton>
                     </Stack>
                 </Container>

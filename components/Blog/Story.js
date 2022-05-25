@@ -1,5 +1,6 @@
 import React from "react";
-import {Box, Link, Image, Heading, Text, HStack, Tag, useColorModeValue} from '@chakra-ui/react';
+import Link from 'next/link';
+import {Box, Image, Heading, Text, HStack, Tag, useColorModeValue} from '@chakra-ui/react';
 
 const BlogTags = (props) => {
     return (

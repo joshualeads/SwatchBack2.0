@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { Container, Stack, Box, Divider, Heading } from '@chakra-ui/react';
 
 import { fetchAPI } from "../lib/strapiCMS";
@@ -16,6 +17,9 @@ const Blogs = ({ articles, categories, trending, topStories, recentStories }) =>
 
     return (
         <main>
+            <Head>
+                <title>Blog - SwatchBack</title>
+            </Head>
             <Box className={'sb_container'}>
             <Container
                 as={Stack}

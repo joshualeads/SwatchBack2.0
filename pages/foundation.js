@@ -1,4 +1,5 @@
 import React from "react";
+import Head from 'next/head'
 import { Box, Text, Heading, Flex, Spacer, Stack } from "@chakra-ui/react";
 
 import DropDownSearch from "../components/DropDownSearch";
@@ -6,6 +7,9 @@ import DropDownSearch from "../components/DropDownSearch";
 const Foundation = () => {
     return (
         <main>
+            <Head>
+                <title>Foundation - SwatchBack</title>
+            </Head>
             <Box className="sb_container">
                 <Heading as="h2" size="xl" mt={40} mb={10} textAlign={"center"}>
                     Use Existing Shade

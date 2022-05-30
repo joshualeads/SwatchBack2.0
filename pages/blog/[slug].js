@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, HStack, Tag, Image, Text, Link, Heading, requiredChakraThemeKeys, Stack, Container, Divider } from '@chakra-ui/react';
+import Head from "next/head";
+import { Box, HStack, Tag, Image, Text, Heading } from '@chakra-ui/react';
 import BlockType from "../../components/Blog/BlockType";
 
 import { fetchAPI } from '../../lib/strapiCMS';
@@ -57,6 +58,9 @@ const Blog = ({ story, categories }) => {
     
     return(
         <main>
+            <Head>
+              <title>{storyInfo.title} - SwatchBack</title>
+            </Head>
             <Box className="sb_container">
                 <Box w="100%" alignItems={"center"} textAlign={"center"}>
                     

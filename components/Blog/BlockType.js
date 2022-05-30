@@ -46,7 +46,7 @@ const BlockType = (props) => {
         if(slides.length){
             return (
                 <Stack marginTop={"3"} marginBottom={"3"}>
-                    <Carousel slides={slides} />
+                    <Carousel slides={slides} type={"blog"} />
                 </Stack>
             )
         } else {

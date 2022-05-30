@@ -9,7 +9,7 @@ const settings = {
     arrows: true,
     fade: true,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     speed: 500,
     autoplaySpeed: 5000,
     slidesToShow: 1,
@@ -34,9 +34,10 @@ const Carousel = (props) => {
     return (
         <Box
         position={'relative'}
-        height={'600px'}
+        height={'lg'}
         width={'full'}
-        borderRadius={"md"} boxShadow={"md"}
+        borderRadius={ props.type == "product" ? "none" : "md"} 
+        boxShadow={ props.type == "product" ? "none" : "md"}
         overflow={'hidden'}>
             {/* CSS files for react-slick */}
             <link
@@ -90,11 +91,11 @@ const Carousel = (props) => {
                 {cards.map((url, index) => (
                 <Box
                     key={index}
-                    height={'6xl'}
+                    height={'lg'}
                     position="relative"
-                    backgroundPosition="center"
+                    backgroundPosition={props.type == 'product' ? "center" : "center"}
                     backgroundRepeat="no-repeat"
-                    backgroundSize="cover"
+                    backgroundSize={props.type == 'product' ? "contain" : "cover"}
                     backgroundImage={`url(${url})`}
                     borderRadius={"md"} 
                     boxShadow={"md"}

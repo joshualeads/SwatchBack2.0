@@ -1,9 +1,8 @@
-import { useState } from 'react'; 
-import Head from 'next/head';
+import { useState } from 'react';
 import Router from 'next/router';
+
 import { ChakraProvider } from '@chakra-ui/react'
 import NextNProgress from 'nextjs-progressbar';
-import Layout from '../components/global/Layout';
 import customTheme from '../styles/customTheme';
 import '../styles/globals.css'
 
@@ -21,10 +20,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider theme={customTheme}>
-      <Layout>
-        <NextNProgress options={{showSpinner:false}} />
-        <Component {...pageProps} />
-      </Layout>
+      <NextNProgress options={{showSpinner:false}} />
+      <Component {...pageProps} />
     </ChakraProvider>
   )
 }

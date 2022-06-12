@@ -2,11 +2,14 @@ import React from "react";
 import Head from 'next/head'
 import { Box, Text, Heading, Flex, Spacer, Stack } from "@chakra-ui/react";
 
+import { useFetchUser } from '../lib/authContext';
+import Layout from '../components/global/Layout';
 import DropDownSearch from "../components/DropDownSearch";
 
 const Foundation = () => {
+    const { user, loading } = useFetchUser();
     return (
-        <main>
+        <Layout user={user}>
             <Head>
                 <title>Foundation - SwatchBack</title>
             </Head>
@@ -26,7 +29,7 @@ const Foundation = () => {
                     <Spacer />
                 </Flex>
             </Box>
-        </main>
+        </Layout>
     )
 }
 

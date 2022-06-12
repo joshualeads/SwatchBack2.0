@@ -1,55 +1,60 @@
 import Head from 'next/head'
+import Layout from '../components/global/Layout'
 import styles from '../styles/Home.module.css'
+import { useFetchUser } from '../lib/authContext'
 
 export default function Home() {
+  const { user, loading } = useFetchUser();
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>SwatchBack</title>
-        <meta name="description" content="Swatch Back" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout user={user}>
+      <div className={styles.container}>
+        <Head>
+          <title>SwatchBack</title>
+          <meta name="description" content="Swatch Back" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="/">SwatchBack!</a>
-        </h1>
+        <div className={styles.main}>
+          <h1 className={styles.title}>
+            Welcome to <a href="/">SwatchBack!</a>
+          </h1>
 
-        <p className={styles.description}>
-          Get started by searching your favourite  product
-        </p>
+          <p className={styles.description}>
+            Get started by searching your favourite  product
+          </p>
 
-        <div className={styles.grid}>
-          <a href="/foundation" className={styles.card}>
-            <h2>Foundation &rarr;</h2>
-            <p>Find in-depth information about Foundation Products.</p>
-          </a>
+          <div className={styles.grid}>
+            <a href="/foundation" className={styles.card}>
+              <h2>Foundation &rarr;</h2>
+              <p>Find in-depth information about Foundation Products.</p>
+            </a>
 
-          <a href="/dupes" className={styles.card}>
-            <h2>Dupes &rarr;</h2>
-            <p>Want to know more about Dupes and its types?</p>
-          </a>
+            <a href="/dupes" className={styles.card}>
+              <h2>Dupes &rarr;</h2>
+              <p>Want to know more about Dupes and its types?</p>
+            </a>
 
-          <a
-            href="/"
-            className={styles.card}
-          >
-            <h2>Login &rarr;</h2>
-            <p>Discover and deploy your Style with us</p>
-          </a>
+            <a
+              href="/"
+              className={styles.card}
+            >
+              <h2>Login &rarr;</h2>
+              <p>Discover and deploy your Style with us</p>
+            </a>
 
-          <a
-            href="/"
-            className={styles.card}
-          >
-            <h2>Sign Up &rarr;</h2>
-            <p>
-              Instantly join our family and have fun
-            </p>
-          </a>
+            <a
+              href="/"
+              className={styles.card}
+            >
+              <h2>Sign Up &rarr;</h2>
+              <p>
+                Instantly join our family and have fun
+              </p>
+            </a>
+          </div>
         </div>
-      </main>
 
-    </div>
+      </div>
+    </Layout>
   )
 }

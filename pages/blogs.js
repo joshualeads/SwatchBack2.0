@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { Container, Stack, Box, Divider, Heading } from '@chakra-ui/react';
 
 import { fetchAPI } from "../lib/strapiCMS";
+import { useFetchUser } from '../lib/authContext';
+import Layout from '../components/global/Layout'
 import LatestStories from '../components/Blog/LatestStories';
 import TopStories from '../components/Blog/TopStories';
 import TrendingStory from '../components/Blog/TrendingStory';
@@ -15,8 +17,10 @@ const Blogs = ({ articles, categories, trending, topStories, recentStories }) =>
     console.log(topStories);
     console.log(recentStories);
 
+    const { user, loading } = useFetchUser();
+
     return (
-        <main>
+        <Layout user={user}>
             <Head>
                 <title>Blog - SwatchBack</title>
             </Head>
@@ -63,7 +67,7 @@ const Blogs = ({ articles, categories, trending, topStories, recentStories }) =>
                 </Box>
             </Container>
             </Box>
-        </main>
+        </Layout>
     )
 }
 

@@ -229,3 +229,8 @@ const Login = () => {
 }
 
 export default Login;
+
+// Sample Login Response
+/*
+    {"jwt":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTY1NTIyMzA3NCwiZXhwIjoxNjU3ODE1MDc0fQ.AEzV1puMgQWlBwPZU6Bu0lp7vUWfmxkqM6cWeQI1CEc","user":{"id":10,"username":"joshuajabakumar","email":"joshuajabakumar@gmail.com","provider":"local","confirmed":true,"blocked":false,"createdAt":"2022-06-13T16:32:36.659Z","updatedAt":"2022-06-14T16:08:27.330Z","firstName":"Joshua","lastName":"Jabakumar"}}
+*/

@@ -32,7 +32,7 @@ import Layout from '../components/global/Layout';
 
 const Register = () => {
     const { user, loading } = useFetchUser();
-        
+
     const router = useRouter();
 
     // React-Hook-Form Validation
@@ -286,7 +286,8 @@ const Register = () => {
                                         type={'submit'}
                                         _hover={{
                                             bg: 'blue.500',
-                                        }}>
+                                        }}
+                                    >
                                         Sign up
                                     </Button>
                                 </Stack>

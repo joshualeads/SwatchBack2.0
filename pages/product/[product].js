@@ -8,7 +8,6 @@ import { useFetchUser } from '../../lib/authContext';
 import Layout from '../../components/global/Layout';
 
 const ProductDetailPage = ({product}) => {
-    console.log(product);
 
     const { user, loading } = useFetchUser();
     const productImages = [];
@@ -40,11 +39,18 @@ const ProductDetailPage = ({product}) => {
               </Stack>
 
               {/* Recommended Products */}
-              <ProductStrip 
-                title={"Recommended Products"}
-                products={product.collections.edges[0].node.products.edges}
-                className={'productStrip'}
-              />
+              {
+                product.collections.edges[0] ?
+                  (
+                    <ProductStrip 
+                      title={"Recommended Products"}
+                      products={product.collections.edges[0].node.products.edges}
+                      className={'productStrip'}
+                    />
+                  ) :
+                  <></>
+              }
+              
             </Box>
         </Layout>
     )

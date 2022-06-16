@@ -39,7 +39,7 @@ const BlockType = (props) => {
 
         if(block.files.data.length) {
             block.files.data.map((file)=>{
-                slides.push(`http://localhost:1337${file.attributes.url}`);
+                slides.push(`${process.env.STRAPI_CMS_DOMAIN}${file.attributes.url}`);
             })
         }
 

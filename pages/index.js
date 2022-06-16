@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Layout from '../components/global/Layout'
 import styles from '../styles/Home.module.css'
 import { useFetchUser } from '../lib/authContext'
@@ -16,7 +17,7 @@ export default function Home() {
 
         <div className={styles.main}>
           <h1 className={styles.title}>
-            Welcome to <a href="/">SwatchBack!</a>
+            Welcome to <Link href="/">SwatchBack!</Link>
           </h1>
 
           <p className={styles.description}>
@@ -24,33 +25,41 @@ export default function Home() {
           </p>
 
           <div className={styles.grid}>
-            <a href="/foundation" className={styles.card}>
-              <h2>Foundation &rarr;</h2>
-              <p>Find in-depth information about Foundation Products.</p>
-            </a>
+            <Link href="/foundation" className={styles.card}>
+              <>
+                <h2>Foundation &rarr;</h2>
+                <p>Find in-depth information about Foundation Products.</p>
+              </>
+            </Link>
 
-            <a href="/dupes" className={styles.card}>
-              <h2>Dupes &rarr;</h2>
-              <p>Want to know more about Dupes and its types?</p>
-            </a>
+            <Link href="/dupes" className={styles.card}>
+              <>
+                <h2>Dupes &rarr;</h2>
+                <p>Want to know more about Dupes and its types?</p>
+              </>
+            </Link>
 
-            <a
+            <Link
               href="/"
               className={styles.card}
             >
-              <h2>Login &rarr;</h2>
-              <p>Discover and deploy your Style with us</p>
-            </a>
+              <>
+                <h2>Login &rarr;</h2>
+                <p>Discover and deploy your Style with us</p>
+              </>
+            </Link>
 
-            <a
+            <Link
               href="/"
               className={styles.card}
             >
-              <h2>Sign Up &rarr;</h2>
-              <p>
-                Instantly join our family and have fun
-              </p>
-            </a>
+              <>
+                <h2>Sign Up &rarr;</h2>
+                <p>
+                  Instantly join our family and have fun
+                </p>
+              </>
+            </Link>
           </div>
         </div>
 

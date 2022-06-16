@@ -18,7 +18,7 @@ const Foundation = () => {
                     Use Existing Shade
                 </Heading>
                 <Text color={'gray.500'} mb={10} textAlign={"center"} fontSize={"xl"}>
-                    Tell us your current shade match, and we'll help you find a match in your next foundation or concealer!
+                    Tell us your current shade match, and we will help you find a match in your next foundation or concealer!
                 </Text>
 
                 <Flex mt={6} mb={6}>

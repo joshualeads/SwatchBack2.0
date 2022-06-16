@@ -31,7 +31,7 @@ const ProductDetailPage = ({product}) => {
                   <Heading as="h2" size="lg" mt={6} mb={2} textAlign={["center", "center", "left", "left", "left"]}>
                     {product.title}
                   </Heading>
-                  <Text textAlign={["center", "center", "left", "left", "left"]}>by "{product.vendor}"</Text>
+                  <Text textAlign={["center", "center", "left", "left", "left"]}>by &quot;{product.vendor}&quot;</Text>
                   <Text mt={"2%"} textAlign={["center", "center", "left", "left", "left"]}>{product.description}</Text>
                 </Box>
               </Stack>

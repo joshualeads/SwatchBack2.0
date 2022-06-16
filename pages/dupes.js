@@ -20,7 +20,7 @@ const Dupes = () => {
                     Search By Product
                 </Heading>
                 <Text color={'gray.500'} mb={10} textAlign={"center"} fontSize={"xl"}>
-                    Start typing the name of the product you're looking for dupes below, then select the product from the drop down menu
+                    Start typing the name of the product you are looking for dupes below, then select the product from the drop down menu
                 </Text>
 
                 <Flex mt={6} mb={6}>

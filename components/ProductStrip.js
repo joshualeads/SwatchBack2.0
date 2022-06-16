@@ -40,6 +40,7 @@ const ProductStrip = (props) => {
     };
 
     const [slider, setSlider] = React.useState(null, Slider);
+    let psColorModeValueBox = useColorModeValue('white', 'gray.800');
 
     return (
         <>
@@ -106,7 +107,7 @@ const ProductStrip = (props) => {
                                 p={6}
                                 maxW={'90%'}
                                 w={'full'}
-                                bg={useColorModeValue('white', 'gray.800')}
+                                bg={psColorModeValueBox}
                                 //boxShadow={'lg'}
                                 rounded={'lg'}
                                 pos={'relative'}
@@ -140,6 +141,7 @@ const ProductStrip = (props) => {
                                         objectFit={'cover'}
                                         src={product.node.images.edges[0].node.originalSrc}
                                         cursor={'pointer'}
+                                        alt={product.node.title}
                                     />
                                 </Box>
                                 <Stack pt={10} align={'center'}>

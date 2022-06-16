@@ -34,6 +34,13 @@ export const BlogAuthor = (props) => {
 };
 
 const Story = (props) => {
+    let storyBgRadiant = useColorModeValue(
+        'radial(orange.600 1px, transparent 1px)',
+        'radial(orange.300 1px, transparent 1px)'
+    );
+
+    let storyColorMode = useColorModeValue('gray.700', 'gray.200');
+
     return(
         <Box
         marginTop={{ base: '1', sm: '5' }}
@@ -67,10 +74,7 @@ const Story = (props) => {
                 </Box>
                 <Box zIndex="1" width="100%" position="absolute" height="100%">
                     <Box
-                        bgGradient={useColorModeValue(
-                            'radial(orange.600 1px, transparent 1px)',
-                            'radial(orange.300 1px, transparent 1px)'
-                        )}
+                        bgGradient={storyBgRadiant}
                         backgroundSize="20px 20px"
                         opacity="0.4"
                         height="100%"
@@ -99,7 +103,7 @@ const Story = (props) => {
                             <Text
                                 as="p"
                                 marginTop="2"
-                                color={useColorModeValue('gray.700', 'gray.200')}
+                                color={storyColorMode}
                                 fontSize="lg">
                                 {props.description}
                             </Text> : null

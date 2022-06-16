@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { HStack, Link } from '@chakra-ui/react';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
+import Image from 'next/image';
 
 const DropDownSearch = (props) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -121,7 +122,7 @@ const DropDownSearch = (props) => {
     const renderMenuItems = (option, props) => {
         return (
             <HStack key={option.id} onClick={handleLinkClick} handle={option.handle} onKeyDown={handleLinkClick} >
-                <img
+                <Image
                     alt={option.login}
                     src={option.avatar_url}
                     style={{
@@ -129,6 +130,8 @@ const DropDownSearch = (props) => {
                         marginRight: '10px',
                         width: '75px',
                     }}
+                    width= '75px'
+                    height= '75px'
                     className='basis-3/4'
                     handle={option.handle}
                 />

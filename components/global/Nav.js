@@ -51,13 +51,17 @@ const Nav = () => {
 
     const { user, loadingUser } = useUser();
 
+    let navColorModeValueBox = useColorModeValue('gray.100', 'gray.900');
+
+    let navColorModeValueLink = useColorModeValue('gray.200', 'gray.700');
+
     const logout = () => {
         unsetToken();
     };
 
     return (
         <header>
-            <Box bg={useColorModeValue('gray.100', 'gray.900')} className='sb_container'>
+            <Box bg={navColorModeValueBox} className='sb_container'>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                     <IconButton
                         size={'md'}
@@ -138,7 +142,7 @@ const Nav = () => {
                                         rounded={'md'}
                                         _hover={{
                                             textDecoration: 'none',
-                                            bg: useColorModeValue('gray.200', 'gray.700'),
+                                            bg: navColorModeValueLink,
                                         }}
                                         className={styles.navLink}
                                     >Login</Link>
@@ -152,7 +156,7 @@ const Nav = () => {
                                         rounded={'md'}
                                         _hover={{
                                             textDecoration: 'none',
-                                            bg: useColorModeValue('gray.200', 'gray.700'),
+                                            bg: navColorModeValueLink,
                                         }}
                                         className={styles.navLink}
                                     >Register</Link>

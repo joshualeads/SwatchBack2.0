@@ -4,10 +4,13 @@ import { Box, Stack, Heading, Text } from "@chakra-ui/react";
 import { getProduct, recursiveCatalog } from "../../lib/shopify"
 import Carousel from "../../components/Carousel";
 import ProductStrip from "../../components/ProductStrip";
+import { useFetchUser } from '../../lib/authContext';
+import Layout from '../../components/global/Layout';
 
 const ProductDetailPage = ({product}) => {
     console.log(product);
 
+    const { user, loading } = useFetchUser();
     const productImages = [];
 
     if(product.images) {
@@ -17,7 +20,7 @@ const ProductDetailPage = ({product}) => {
     }
 
     return (
-        <main>
+        <Layout user={user}>
             <Box className="sb_container">
               <Head>
                 <title>{product.title} - SwatchBack</title>
@@ -43,7 +46,7 @@ const ProductDetailPage = ({product}) => {
                 className={'productStrip'}
               />
             </Box>
-        </main>
+        </Layout>
     )
 }
 

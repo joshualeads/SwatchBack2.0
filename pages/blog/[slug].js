@@ -1,6 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import { Box, HStack, Tag, Image, Text, Heading } from '@chakra-ui/react';
+import { useFetchUser } from '../../lib/authContext';
+import Layout from '../../components/global/Layout';
+
 import BlockType from "../../components/Blog/BlockType";
 
 import { fetchAPI } from '../../lib/strapiCMS';
@@ -55,9 +58,10 @@ const Blog = ({ story, categories }) => {
     const storyInfo = story.attributes;
     const tags = getStoryTags(storyInfo.categories.data);
     let date = storyInfo.updatedAt;
-    
+    const { user, loading } = useFetchUser();
+
     return(
-        <main>
+        <Layout user={user}>
             <Head>
               <title>{storyInfo.title} - SwatchBack</title>
             </Head>
@@ -98,7 +102,7 @@ const Blog = ({ story, categories }) => {
                     }
                 </Box>
             </Box>
-        </main>
+        </Layout>
     )
 }
 

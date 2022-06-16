@@ -42,6 +42,8 @@ const Register = () => {
 
     const [isSubmitting, setSubmitStatus] = useState(false);
 
+    const [submitSuccess, setSubmitSuccess] = useState('');
+
     const [submitError, setSubmitError] = useState('');
 
     const onSubmit = async (data) => {
@@ -81,7 +83,11 @@ const Register = () => {
             setSubmitStatus(false);
             setSubmitError(errorMessage);
           } else {
-            setToken(responseData);
+            // Disable Submit Button / Unset Previous Submit Error Message
+            setSubmitStatus(true);
+            setSubmitError('');
+            setSubmitSuccess('Account Verification link has been sent to your mail. Please check your Spam folder too.');
+            setToken(responseData, '/login');
           }
         } catch (error) {
             // Scroll to the Top
@@ -117,7 +123,7 @@ const Register = () => {
                     justify={'center'}
                     // bg={useColorModeValue('gray.50', 'gray.800')}
                 >
-                    <Stack spacing={8} mx={'auto'} maxW={'xxl'} py={12} px={6}>
+                    <Stack spacing={8} mx={'auto'} maxW={'xl'} py={12} px={6}>
                         <Stack align={'center'}>
                             <Heading fontSize={'4xl'} textAlign={'center'}>
                                 Sign up
@@ -131,6 +137,19 @@ const Register = () => {
                             bg={useColorModeValue('white', 'gray.700')}
                             boxShadow={'lg'}
                             p={8}>
+
+                            {/* Success Alert Message */}
+                            {
+                                submitSuccess ?
+                                <Alert status='success' marginBottom={5} rounded={'lg'}>
+                                    <AlertIcon />
+                                    {/* <AlertTitle>{submitError}</AlertTitle> */}
+                                    {
+                                        <AlertDescription>{submitSuccess}</AlertDescription>
+                                    }
+                                </Alert>
+                                : null
+                            }
 
                             {
                                 submitError ? 

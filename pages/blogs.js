@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Container, Stack, Box, Divider, Heading } from '@chakra-ui/react';
+import { Container, Stack, Box, Divider, Heading, Text } from '@chakra-ui/react';
 
 import { fetchAPI } from "../lib/strapiCMS";
 import { useFetchUser } from '../lib/authContext';
@@ -40,17 +40,27 @@ const Blogs = ({ articles, categories, trending, topStories, recentStories }) =>
                     <Heading marginTop="1" fontSize={"2xl"}>
                         Trending...
                     </Heading>
-                    <TrendingStory story={trending[0]} />
+                    {trending[0] ? 
+                        <TrendingStory story={trending[0]} />
+                        :
+                        <Text>No Posts</Text>
+                    }
                     <Divider marginTop="5" />
                     {/* Latest Stories */}
                     <Heading marginTop="1" fontSize={"2xl"}>
                         Recent Stories
                     </Heading>
                     {
-                        recentStories.map((recentStory) => {
-                            return <LatestStories story={recentStory} key={Math.random()} />
-                        })
+                        recentStories.length > 0 ?
+                        <>{
+                            recentStories.map((recentStory) => {
+                                return <LatestStories story={recentStory} key={Math.random()} />
+                            })
+                        }</>
+                        :
+                        <Text>No Posts</Text>
                     }
+                    
                     <Divider marginTop="5" />
                 </Box>
 
@@ -60,9 +70,14 @@ const Blogs = ({ articles, categories, trending, topStories, recentStories }) =>
                         Top Stories
                     </Heading>
                     {
-                        topStories.map((topStory) => {
-                            return <TopStories story={topStory} key={Math.random()}/>
-                        })
+                        topStories.length > 0 ?
+                        <>{
+                            topStories.map((topStory) => {
+                                return <TopStories story={topStory} key={Math.random()}/>
+                            })
+                        }</>
+                        :
+                        <Text>No Posts</Text>
                     }
                 </Box>
             </Container>

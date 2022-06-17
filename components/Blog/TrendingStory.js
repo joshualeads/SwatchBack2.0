@@ -2,6 +2,7 @@ import React from "react";
 import Story from "./Story";
 
 const TrendingStory = (props) => {
+    console.log(props.story);
     const cover = props.story.attributes.cover.data.attributes;
     const storyInfo = props.story.attributes;
 

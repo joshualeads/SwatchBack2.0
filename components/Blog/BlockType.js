@@ -26,7 +26,7 @@ const BlockType = (props) => {
             </Stack>
         )
     } else if (block.__component == "shared.media") {
-        const imageURL = `${process.env.STRAPI_CMS_DOMAIN}${block.file.data.attributes.url}`;
+        const imageURL = `${block.file.data.attributes.url}`;
         const altText = block.file.data.attributes.alternativeText || block.file.data.attributes.caption;
 
         return (
@@ -39,7 +39,7 @@ const BlockType = (props) => {
 
         if(block.files.data.length) {
             block.files.data.map((file)=>{
-                slides.push(`${process.env.STRAPI_CMS_DOMAIN}${file.attributes.url}`);
+                slides.push(`${file.attributes.url}`);
             })
         }
 

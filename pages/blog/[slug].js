@@ -72,7 +72,7 @@ const Blog = ({ story, categories }) => {
 
                     <Box borderRadius="lg" overflow="hidden">
                         <Image
-                            src={`${process.env.STRAPI_CMS_DOMAIN}${cover.url}`}
+                            src={`${cover.url}`}
                             alt={cover.alternativeText}
                             objectFit="contain"
                             width="100%"
@@ -86,7 +86,7 @@ const Blog = ({ story, categories }) => {
                     <BlogAuthor
                         name={storyInfo.author.data.attributes.name}
                         date={date.split('T')[0]}
-                        authorAvatar={`${process.env.STRAPI_CMS_DOMAIN}`+`${storyInfo.author.data.attributes.avatar.data.attributes.url}`}
+                        authorAvatar={`${storyInfo.author.data.attributes.avatar.data.attributes.url}`}
                     />
 
                     <Text as="p" fontSize="md" marginTop={"2"} marginBottom={"3"}>

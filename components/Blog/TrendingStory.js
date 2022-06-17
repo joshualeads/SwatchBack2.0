@@ -17,13 +17,13 @@ const TrendingStory = (props) => {
 
     return(
         <Story 
-            image={`${process.env.STRAPI_CMS_DOMAIN}${cover.url}`}
+            image={`${cover.url}`}
             imageAlt = {cover.alternativeText}
             title = {storyInfo.title}
             description = {storyInfo.description}
             tags={getStoryTags(storyInfo.categories.data)}
             author={storyInfo.author.data.attributes.name}
-            authorAvatar={`${process.env.STRAPI_CMS_DOMAIN}`+`${storyInfo.author.data.attributes.avatar.data.attributes.url}`}
+            authorAvatar={`${storyInfo.author.data.attributes.avatar.data.attributes.url}`}
             slug={storyInfo.slug}
             date={storyInfo.updatedAt}
             storyType={"trendingStory"}

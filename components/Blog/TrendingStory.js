@@ -23,8 +23,8 @@ const TrendingStory = (props) => {
             title = {storyInfo.title}
             description = {storyInfo.description}
             tags={getStoryTags(storyInfo.categories.data)}
-            author={storyInfo.author.data.attributes.name}
-            authorAvatar={`${storyInfo.author.data.attributes.avatar.data.attributes.url}`}
+            author={storyInfo.author.data.attributes.name || 'Unknown'}
+            authorAvatar={`${storyInfo.author.data.attributes.avatar.data.attributes.url}` || '' }
             slug={storyInfo.slug}
             date={storyInfo.updatedAt}
             storyType={"trendingStory"}

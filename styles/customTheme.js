@@ -33,6 +33,9 @@ const customTheme = extendTheme({
             },
             a: {
                 textDecoration: 'none'
+            },
+            button: {
+                textDecoration: 'none'
             }
         })
     }

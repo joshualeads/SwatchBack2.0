@@ -18,6 +18,7 @@ import {
     Heading
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import UserAvatar from 'react-user-avatar';
 import styles from './Nav.module.css';
 
 import { useUser } from '../../lib/authContext';
@@ -58,7 +59,6 @@ const Nav = () => {
     const logout = () => {
         unsetToken();
     };
-
     return (
         <header>
             <Box bg={navColorModeValueBox} className='sb_container'>
@@ -104,12 +104,7 @@ const Nav = () => {
                                         variant={'link'}
                                         cursor={'pointer'}
                                         minW={0}>
-                                        <Avatar
-                                            size={'sm'}
-                                            src={
-                                                'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                                            }
-                                        />
+                                            <UserAvatar size="45" name={`${user.firstName} ${user.lastName}`} className={styles.UserAvatarinner} />
                                     </MenuButton>
                                     <MenuList>
                                         <MenuItem>

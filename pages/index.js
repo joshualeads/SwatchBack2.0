@@ -3,10 +3,13 @@ import Link from 'next/link'
 import Layout from '../components/global/Layout'
 import styles from '../styles/Home.module.css'
 import { useFetchUser } from '../lib/authContext'
+import { useSession } from 'next-auth/react';
 import React from 'react'
-
+ 
 export default function Home() {
   const { user, loading } = useFetchUser();
+  const { data } = useSession();
+
   return (
     <Layout user={user}>
       <div className={styles.container}>
@@ -17,6 +20,8 @@ export default function Home() {
         </Head>
 
         <div className={styles.main}>
+
+          {/* 
           <h1 className={styles.title}>
             Welcome to <Link href="/"><span className='sbLink'>SwatchBack!</span></Link>
           </h1>
@@ -24,7 +29,8 @@ export default function Home() {
           <p className={styles.description}>
             Get started by searching your favourite  product
           </p>
-
+          */}
+          
           <div className={styles.grid}>
             <Link href="/foundation">
               <div className={styles.card}>

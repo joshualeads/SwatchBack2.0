@@ -29,7 +29,8 @@ const customTheme = extendTheme({
                     base: '30%',
                     md: '10%',
                     lg: '10%'
-                }
+                },
+                position: 'relative'
             },
             a: {
                 textDecoration: 'none'

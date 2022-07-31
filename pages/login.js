@@ -18,11 +18,14 @@ import {
     Alert,
     AlertIcon,
     AlertTitle,
-    AlertDescription
+    AlertDescription,
+    Divider
 } from '@chakra-ui/react';
+import { signIn, useSession } from 'next-auth/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useForm } from 'react-hook-form';
 
+import SignInGoogle from './components/SigninGoogle';
 import { useFetchUser } from '../lib/authContext';
 import Layout from '../components/global/Layout';
 import { setToken } from '../lib/auth';
@@ -31,6 +34,7 @@ import { fetcher } from '../lib/api';
 const Login = () => {
 
     const { user, loading } = useFetchUser();
+    const { session, loadingSession } = useSession();
 
     // React-Hook-Form Validation
     const { register, formState: {errors}, handleSubmit  } = useForm();
@@ -96,7 +100,6 @@ const Login = () => {
             console.error(error);
         }
     } 
-
     return (
         <Layout user={user}>
             <Head>
@@ -177,7 +180,7 @@ const Login = () => {
                                             isInvalid={errors.password}
                                             focusBorderColor={ errors.password? 'red.500' : 'blue.500' }
                                             errorBorderColor='red.500'
-                                            maxLength={15}
+                                            maxLength={25}
                                         />
                                         <InputRightElement h={'full'}>
                                         <Button
@@ -192,7 +195,7 @@ const Login = () => {
                                 </FormControl>
 
                                 {/* Forgot Password / SignIn */}
-                                <Stack spacing={10}>
+                                <Stack spacing={10} paddingBottom={5}>
                                     <Stack
                                         direction={{ base: 'column', sm: 'row' }}
                                         align={'start'}
@@ -212,8 +215,17 @@ const Login = () => {
                                     </Button>
                                 </Stack>
 
+                                <Divider />
+
+                                {/* Signin using Gmail */}
+                                {!session && (
+                                    <Stack spacing={10} paddingTop={2}>
+                                        <SignInGoogle gSignIn={()=>{signIn()}}/>
+                                    </Stack>
+                                )}
+
                                 {/* Register Link for New User */}
-                                <Stack pt={6}>
+                                <Stack paddingTop={2} >
                                     <Text align={'center'}>
                                         New user? <Link href={'/register'} color={'blue.400'}>Register</Link>
                                     </Text>

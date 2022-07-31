@@ -19,6 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import UserAvatar from 'react-user-avatar';
+import { useSession, signOut } from 'next-auth/react';
 import styles from './Nav.module.css';
 
 import { useUser } from '../../lib/authContext';
@@ -57,8 +58,41 @@ const Nav = () => {
     let navColorModeValueLink = useColorModeValue('gray.200', 'gray.700');
 
     const logout = () => {
-        unsetToken();
+        if(sbProfile.Provider === 'email'){
+            unsetToken();
+        } else {
+            signOut();
+        }
     };
+
+    const {data, status} = useSession();
+
+    let sbProfile = {
+        isLoggedIn: false
+    };
+
+    if(user || data) {
+        console.log(user);
+        console.log(data);
+        if(user?.firstName || user?.lastName){
+            console.log('Building Profile Data from Email Provider');
+            sbProfile.FirstName = user.firstName;
+            sbProfile.LastName = user.lastName;
+            sbProfile.ProfilePic = '';
+            sbProfile.Provider = 'email';
+            sbProfile.isLoggedIn = true;
+        } else if(data) {
+            console.log('Building Profile Data from Google');
+            sbProfile.FirstName = data.session.user.name.split(' ')[0];
+            sbProfile.LastName = data.session.user.name.split(' ')[1];
+            sbProfile.ProfilePic  = data.session.user.image;
+            sbProfile.Provider = 'google';
+            sbProfile.isLoggedIn = true;
+        } else {
+            sbProfile.isLoggedIn = false;
+        }
+    }
+
     return (
         <header>
             <Box bg={navColorModeValueBox} className='sb_container'>
@@ -96,7 +130,7 @@ const Nav = () => {
                         
                         {/* My Account */}
                         {!loadingUser &&
-                            (user ?
+                            (sbProfile.isLoggedIn ?
                                 (<Menu>
                                     <MenuButton
                                         as={Button}
@@ -104,9 +138,14 @@ const Nav = () => {
                                         variant={'link'}
                                         cursor={'pointer'}
                                         minW={0}>
-                                            <UserAvatar size="45" name={`${user.firstName} ${user.lastName}`} className={styles.UserAvatarinner} />
+                                            <UserAvatar 
+                                                size="45" 
+                                                name={`${sbProfile.FirstName} ${sbProfile.LastName}`} 
+                                                className={styles.UserAvatarinner} 
+                                                src={sbProfile.ProfilePic || ''}
+                                            />
                                     </MenuButton>
-                                    <MenuList>
+                                    <MenuList >
                                         <MenuItem>
                                             <Link href={"/profile"}>
                                                 My Account
@@ -117,7 +156,7 @@ const Nav = () => {
                                                 Favourites
                                             </Link>
                                         </MenuItem>
-                                        <MenuDivider />
+                                        {/* <MenuDivider /> */}
                                         <MenuItem onClick={logout}>Logout</MenuItem>
                                     </MenuList>
                                 </Menu>)
@@ -127,7 +166,7 @@ const Nav = () => {
                         }
 
                         {/* Login / Register */}
-                        {!loadingUser && !user ? (
+                        {!sbProfile.isLoggedIn ? (
                             <>
                                 <Stack ml={6}>
                                     <Link
@@ -140,9 +179,10 @@ const Nav = () => {
                                             bg: navColorModeValueLink,
                                         }}
                                         className={styles.navLink}
-                                    >Login</Link>
+                                    >Signin / Signup</Link>
                                 </Stack>
 
+                                {/*
                                 <Stack ml={6}>
                                     <Link
                                         href={"/register"}
@@ -156,6 +196,7 @@ const Nav = () => {
                                         className={styles.navLink}
                                     >Register</Link>
                                 </Stack>
+                                */}
                             </>
                             ) : <></>
                         }

@@ -1,0 +1,9 @@
+.UserAvatarinner {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.UserAvatarinner.chakra-button:hover {
+    text-decoration: none;
+}

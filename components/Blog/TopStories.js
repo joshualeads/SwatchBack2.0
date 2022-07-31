@@ -2,8 +2,8 @@ import React from "react";
 import Story from "./Story";
 
 const TopStories = (props) => {
-    const cover = props.story.attributes.cover.data.attributes;
-    const storyInfo = props.story.attributes;
+    const cover = props.story.attributes.cover.data.attributes || undefined;
+    const storyInfo = props.story.attributes || undefined;
 
     const getStoryTags = (tags) => {
         let storyTags = [];
@@ -23,7 +23,7 @@ const TopStories = (props) => {
             description = {storyInfo.description}
             tags={getStoryTags(storyInfo.categories.data)}
             author={storyInfo.author.data.attributes.name}
-            authorAvatar={`${storyInfo.author.data.attributes.avatar.data.attributes.url}`}
+            authorAvatar={storyInfo.author.data.attributes.avatar.data ? `${storyInfo.author.data.attributes.avatar.data.attributes.url}` : undefined}
             slug={storyInfo.slug}
             date={storyInfo.updatedAt}
             storyType={"topStory"}

@@ -21,6 +21,7 @@ import {
     AlertTitle,
     AlertDescription
   } from '@chakra-ui/react';
+import { signIn, signOut, useSession } from 'next-auth/react'
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useForm } from 'react-hook-form';
@@ -268,15 +269,15 @@ const Register = () => {
                                                 ...register("password", 
                                                 {
                                                     required: {value: "required"},
-                                                    minLength: {value: 6, message: "Should be more than 6 and less than 15"}, 
-                                                    maxLength: {value: 15, message: "Should be more than 6 and less than 15"}
+                                                    minLength: {value: 6, message: "Should be more than 6 and less than 25"}, 
+                                                    maxLength: {value: 25, message: "Should be more than 6 and less than 25"}
                                                 })
                                             }
                                             isInvalid={errors.password}
                                             focusBorderColor={ errors.password? 'red.500' : 'blue.500' }
                                             errorBorderColor='red.500'
                                             minLength={6}
-                                            maxLength={15}
+                                            maxLength={25}
                                         />
                                         <InputRightElement h={'full'}>
                                             <Button

@@ -1,6 +1,8 @@
 import React from "react";
 import Link from 'next/link';
 import {Box, Image, Heading, Text, HStack, Tag, useColorModeValue} from '@chakra-ui/react';
+import UserAvatar from 'react-user-avatar';
+import styles from './Blog.module.css';
 
 const BlogTags = (props) => {
     return (
@@ -17,15 +19,27 @@ const BlogTags = (props) => {
 };
 
 export const BlogAuthor = (props) => {
+
+
     return (
       <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
-        <Image
-          borderRadius="full"
-          boxSize="40px"
-          // src="https://100k-faces.glitch.me/random-image"
-          src={props.photo}
-          alt={`Avatar of ${props.name || ''}`}
-        />
+        {props.photo ?
+            <Image
+                borderRadius="full"
+                boxSize="40px"
+                // src="https://100k-faces.glitch.me/random-image"
+                src={props.photo}
+                alt={`Avatar of ${props.name || ''}`}
+            />
+        :
+            <UserAvatar 
+                size="35" 
+                name={`${props.name}`} 
+                className={styles.UserAvatarinner} 
+                src={props.photo || ''}
+            />
+        }
+        
         <Text fontWeight="medium">{props.name}</Text>
         <Text>—</Text>
         <Text>{props.date? props.date : ''}</Text>

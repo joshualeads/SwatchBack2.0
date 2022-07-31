@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import Router from 'next/router';
 
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
 import customTheme from '../styles/customTheme';
 import '../styles/globals.css'
+
+import { SessionProvider } from 'next-auth/react';
 
 function MyApp({ Component, pageProps }) {
 
@@ -19,10 +21,12 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
-    <ChakraProvider theme={customTheme}>
-      <NextNProgress options={{showSpinner:false}} />
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <SessionProvider session={pageProps.session} >
+      <ChakraProvider theme={customTheme}>
+        <NextNProgress options={{showSpinner:false}} />
+          <Component {...pageProps} />
+      </ChakraProvider>
+    </SessionProvider>
   )
 }
 

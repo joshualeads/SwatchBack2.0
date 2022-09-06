@@ -2,7 +2,7 @@ import React from "react";
 import Story from "./Story";
 
 const TrendingStory = (props) => {
-    const cover = props.story.attributes.cover.data.attributes || undefined;
+    const cover = (props.story.attributes.cover.data ? props.story.attributes.cover.data.attributes : undefined) || undefined;
     const storyInfo = props.story.attributes || undefined;
 
     const getStoryTags = (tags) => {
@@ -18,8 +18,8 @@ const TrendingStory = (props) => {
     if(cover && storyInfo) {
         return(
             <Story 
-                image={`${cover.url}`}
-                imageAlt = {cover.alternativeText}
+                image={cover ? `${cover.url}` : ''}
+                imageAlt = {cover ? cover.alternativeText : ''}
                 title = {storyInfo.title}
                 description = {storyInfo.description}
                 tags={getStoryTags(storyInfo.categories.data)}

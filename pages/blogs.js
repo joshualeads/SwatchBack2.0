@@ -86,7 +86,7 @@ const Blogs = ({ articles, categories, trending, topStories, recentStories }) =>
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps () {
     // Run API calls in parallel
 
     const queryFilter = {

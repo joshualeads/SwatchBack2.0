@@ -106,6 +106,7 @@ const Blog = ({ story, categories }) => {
     )
 }
 
+/*
 export async function getStaticPaths() {
 
   const storiesResponse = [];
@@ -140,8 +141,9 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
+*/
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
 
   const queryFilter = {
     populate: {
@@ -173,7 +175,7 @@ export async function getStaticProps({ params }) {
   
     return {
       props: { story: storiesRes.data[0], categories: categoriesRes },
-      revalidate: 1,
+      //revalidate: 1,
     }
 }
 

@@ -133,8 +133,7 @@ export async function getServerSideProps () {
             trending: trendingRes.data,
             topStories: topStoriesRes.data,
             recentStories: recentStoriesRes.data
-        },
-        revalidate: 1,
+        }
     }
 }
 

@@ -54,8 +54,8 @@ const Blog = ({ story, categories }) => {
     console.log(story);
     //console.log(categories);
 
-    const cover = story.attributes.cover.data.attributes;
-    const storyInfo = story.attributes;
+    const cover = (story.attributes.cover.data ? story.attributes.cover.data.attributes : undefined) || undefined;
+    const storyInfo = story.attributes || undefined;
     const tags = getStoryTags(storyInfo.categories.data);
     let date = storyInfo.updatedAt;
     const { user, loading } = useFetchUser();
@@ -72,8 +72,8 @@ const Blog = ({ story, categories }) => {
 
                     <Box borderRadius="lg" overflow="hidden">
                         <Image
-                            src={`${cover.url}`}
-                            alt={cover.alternativeText}
+                            src={cover ? `${cover.url}` : ''}
+                            alt={cover ? cover.alternativeText : ''}
                             objectFit="contain"
                             width="100%"
                             />

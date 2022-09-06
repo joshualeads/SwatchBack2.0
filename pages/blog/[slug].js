@@ -1,8 +1,10 @@
 import React from "react";
 import Head from "next/head";
+import UserAvatar from 'react-user-avatar';
 import { Box, HStack, Tag, Image, Text, Heading } from '@chakra-ui/react';
 import { useFetchUser } from '../../lib/authContext';
 import Layout from '../../components/global/Layout';
+import styles from '../../components/Blog/Blog.module.css';
 
 import BlockType from "../../components/Blog/BlockType";
 
@@ -25,13 +27,24 @@ const BlogTags = (props) => {
 const BlogAuthor = (props) => {
     return (
       <HStack marginTop="3" marginBottom="3" spacing="2" display="flex" alignItems="center" textAlign={"center"} justifyContent={"center"}>
-        <Image
-          borderRadius="full"
-          boxSize="40px"
-          //src="https://100k-faces.glitch.me/random-image"
-          src={props.authorAvatar}
-          alt={`Avatar of ${props.name || ''}`}
-        />
+        {
+          props.authorAvatar ?
+            <Image
+              borderRadius="full"
+              boxSize="40px"
+              //src="https://100k-faces.glitch.me/random-image"
+              src={props.authorAvatar}
+              alt={`Avatar of ${props.name || ''}`}
+            />
+          :
+          <UserAvatar 
+            size="35" 
+            name={`${props.name}`} 
+            className={styles.UserAvatarinner} 
+            src={props.photo || ''}
+          />
+        }
+
         <Text fontWeight="medium">{props.name}</Text>
         <Text>—</Text>
         <Text>{props.date? props.date : ''}</Text>
@@ -86,7 +99,7 @@ const Blog = ({ story, categories }) => {
                     <BlogAuthor
                         name={storyInfo.author.data.attributes.name}
                         date={date.split('T')[0]}
-                        authorAvatar={`${storyInfo.author.data.attributes.avatar.data.attributes.url}`}
+                        authorAvatar={storyInfo.author.data.attributes.avatar.data ? `${storyInfo.author.data.attributes.avatar.data.attributes.url}`: ''}
                     />
 
                     <Text as="p" fontSize="md" marginTop={"2"} marginBottom={"3"}>

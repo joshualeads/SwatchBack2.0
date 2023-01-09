@@ -6,7 +6,6 @@ import Footer from './Footer';
 import { UserProvider } from "../../lib/authContext";
 
 const Layout = ({user, loadingUser = false, path = "", children}) => {
-    console.log(path);
     return(
         <UserProvider value={{ user, loadingUser }}>
             { path === "home" ? <NavHome/> :  <Nav /> }

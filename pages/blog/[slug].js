@@ -116,7 +116,7 @@ const Blog = ({ story, categories }) => {
 
                     {/* Comment Plugin */}
                     <div 
-                      class="fb-comments" 
+                      className="fb-comments" 
                       data-href="https://developers.facebook.com/docs/plugins/comments#configurator" 
                       data-width="" 
                       data-numposts="5">  

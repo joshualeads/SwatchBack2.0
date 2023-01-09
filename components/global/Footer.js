@@ -10,8 +10,11 @@ import {
     useColorModeValue,
     VisuallyHidden,
     Heading,
-    //textDecoration
+    //textDecoration,
+    HStack,
+    Flex
 } from '@chakra-ui/react';
+import styles from './Nav.module.css';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Logo = (props) => {
@@ -43,6 +46,28 @@ const SocialButton = (props) => {
     )
 }
 
+const Links = [
+    { 'name': 'About', 'url': '/about' },
+    { 'name': 'Advertising', 'url': '/advertising' },
+    { 'name': 'How Search works ', 'url': '/how-search-works' },
+    { 'name': 'Privacy Terms', 'url': '/privacy-terms' }
+];
+
+const NavLink = (props) => (
+    <Link
+        px={2}
+        py={1}
+        rounded={'md'}
+        _hover={{
+            textDecoration: 'none',
+            bg: useColorModeValue('gray.200', 'gray.700'),
+        }}
+        className={styles.navLink}
+        href={props.url}>
+        {props.children}
+    </Link>
+);
+
 const Footer = () => {
     return (
         <footer>
@@ -63,6 +88,21 @@ const Footer = () => {
                     spacing={4}
                     justify={{ base: 'center', md: 'space-between' }}
                     align={{ base: 'center', md: 'center' }}>
+                            <HStack
+                                as={'nav'}
+                                spacing={4}
+                                display={{ base: 'none', md: 'flex' }}>
+                                    {Links.map((link) => (
+                                        <NavLink key={link.url} url={link.url}>{link.name}</NavLink>
+                                    ))}
+                            </HStack>
+
+                            <Flex alignItems={'center'} justifyContent={'space-between'}>
+                                <Text>© 2023 Find My Dupe. All rights reserved</Text>
+                            </Flex>
+                        
+                    {/* Orginal Footer Design */}                        
+                    {/*
                     <Logo><Heading fontSize={"3xl"} _hover={{cursor:'pointer'}}>SwatchBack</Heading></Logo>
                     <Text>© 2022 SwatchBack. All rights reserved</Text>
                     <Stack direction={'row'} spacing={6}>
@@ -76,6 +116,7 @@ const Footer = () => {
                             <FaInstagram color={useColorModeValue('gray.700', 'gray.200')} />
                         </SocialButton>
                     </Stack>
+                    */}
                 </Container>
             </Box>
         </footer>

@@ -1,4 +1,5 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document';
+import FacebookSDK from './components/FacebookSDK';
 
 const Document = () => {
   return (
@@ -9,6 +10,7 @@ const Document = () => {
       </Head>
       <body>
         <Main />
+        <FacebookSDK />
         <NextScript />
       </body>
     </Html>

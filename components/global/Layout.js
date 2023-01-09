@@ -1,13 +1,16 @@
 import React from "react";
 import Nav from "./Nav";
+import NavHome from "./NavHome";
 import Footer from './Footer';
 
 import { UserProvider } from "../../lib/authContext";
 
-const Layout = ({user, loadingUser = false, children}) => {
+const Layout = ({user, loadingUser = false, path = "", children}) => {
+    console.log(path);
     return(
         <UserProvider value={{ user, loadingUser }}>
-            <Nav />
+            { path === "home" ? <NavHome/> :  <Nav /> }
+            
             <main className="template">
                 {children}
             </main>

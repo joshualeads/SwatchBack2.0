@@ -113,6 +113,14 @@ const Blog = ({ story, categories }) => {
                             )
                             : <React.Fragment></React.Fragment>
                     }
+
+                    {/* Comment Plugin */}
+                    <div 
+                      class="fb-comments" 
+                      data-href="https://developers.facebook.com/docs/plugins/comments#configurator" 
+                      data-width="" 
+                      data-numposts="5">  
+                    </div>
                 </Box>
             </Box>
         </Layout>

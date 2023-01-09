@@ -47,7 +47,7 @@ const NavLink = (props) => (
     </Link>
 );
 
-const Nav = () => {
+const NavHome = () => {
     // Open and close the Drop Down Menu
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -106,13 +106,14 @@ const Nav = () => {
                     />
 
                     <HStack spacing={8} alignItems={'center'}>
+                        {/* Logo and Nav Links in Header */}
+                        {/*  
                         <Box>
                             <Heading fontSize={"3xl"}>
                                 <Link href='/' py={'5'} _hover={{
                                     textDecoration: 'none',
                                 }}>
                                     SwatchBack
-                                    {/* <Image src='/sbHeader.png' alt='SwatchBack' width={'95%'} height={'95%'}></Image> */}
                                 </Link>
                             </Heading>
                         </Box>
@@ -124,6 +125,7 @@ const Nav = () => {
                                 <NavLink key={link.url} url={link.url}>{link.name}</NavLink>
                             ))}
                         </HStack>
+                    */}
                     </HStack>
 
                     <Flex alignItems={'center'} justifyContent={'space-between'}>
@@ -217,4 +219,4 @@ const Nav = () => {
     );
 }
 
-export default Nav;
+export default NavHome;

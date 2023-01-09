@@ -5,6 +5,7 @@ import {
     Flex,
     Avatar,
     HStack,
+    Stack,
     IconButton,
     Button,
     Menu,
@@ -14,8 +15,8 @@ import {
     MenuDivider,
     useDisclosure,
     useColorModeValue,
-    Stack,
-    Heading
+    Heading,
+    Text
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import UserAvatar from 'react-user-avatar';
@@ -111,8 +112,12 @@ const Nav = () => {
                                 <Link href='/' py={'5'} _hover={{
                                     textDecoration: 'none',
                                 }}>
-                                    SwatchBack
+                                    <HStack>
+                                    <Text display={'inline'} color={useColorModeValue('#000080')} m={'0px !important'}>find</Text>
+                                    <Text display={'inline'} color={useColorModeValue('#ff6600')} m={'0px !important'}>my</Text>
+                                    <Text display={'inline'} color={useColorModeValue('#000080')} m={'0px !important'}>dupe</Text>
                                     {/* <Image src='/sbHeader.png' alt='SwatchBack' width={'95%'} height={'95%'}></Image> */}
+                                    </HStack>
                                 </Link>
                             </Heading>
                         </Box>

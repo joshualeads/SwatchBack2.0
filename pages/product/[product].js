@@ -19,7 +19,6 @@ const ProductDetailPage = ({product}) => {
       });
     }
 
-    console.log(product);
     return (
         <Layout user={user}>
             <Box className="sb_container">

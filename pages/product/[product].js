@@ -1,6 +1,7 @@
 import React from "react";
-import Head from 'next/head'
-import { Box, Stack, Heading, Text } from "@chakra-ui/react";
+import Head from 'next/head';
+import Image from 'next/image';
+import { Box, Stack, Heading, Text, Button } from "@chakra-ui/react";
 import { getProduct, recursiveCatalog } from "../../lib/shopify"
 import Carousel from "../../components/Carousel";
 import ProductStrip from "../../components/ProductStrip";
@@ -18,6 +19,7 @@ const ProductDetailPage = ({product}) => {
       });
     }
 
+    console.log(product);
     return (
         <Layout user={user}>
             <Box className="sb_container">
@@ -25,16 +27,38 @@ const ProductDetailPage = ({product}) => {
                 <title>{product.title} - SwatchBack</title>
               </Head>
               <Stack direction={['column', 'column', 'row', 'row', 'row']} mt={'2%'}>
-                <Box width={['100%','100%','40%','40%','40%']} mt={'2%'}>
+                {/* Hero Product Image */}
+                <Box width={['100%','100%','50%','50%','50%']} mt={'2%'} position={'relative'} display={'flex'} flexDirection='row'>
+                  {/*
                   <Carousel slides={productImages} type={"product"} />
+                  */}
+                  <Image 
+                    width={"500px"}
+                    height={"500px"}
+                    src={productImages[0]}
+                    objectFit={"fill"}
+                  />
+                  <Image
+                    width={"500px"}
+                    height={"500px"}
+                    src={productImages[1]}
+                    objectFit={"fill"}
+                  />
                 </Box>
 
-                <Box width={['100%','100%','60%','60%','60%']} paddingLeft={['0%', '0%', '2%', '2%', '2%']}>
-                  <Heading as="h2" size="lg" mt={6} mb={2} textAlign={["center", "center", "left", "left", "left"]}>
+                {/* Hero Product Description */}
+                <Box width={['100%','100%','40%','40%','40%']} paddingLeft={['0%', '0%', '2%', '2%', '2%']}>
+                  <Text textAlign={["center", "center", "left", "left", "left"]} mt={6}>Search Results for:</Text>
+                  <Heading as="h2" size="lg" mb={2} textAlign={["center", "center", "left", "left", "left"]}>
                     {product.title}
                   </Heading>
                   <Text textAlign={["center", "center", "left", "left", "left"]}>by &quot;{product.vendor}&quot;</Text>
                   <Text mt={"2%"} textAlign={["center", "center", "left", "left", "left"]}>{product.description}</Text>
+                </Box>
+
+                {/* Hero Product Buy Button */}
+                <Box width={['100%','100%','10%','10%','10%']} paddingLeft={['0%', '0%', '2%', '2%', '2%']} alignContent={"center"}>
+                  <Button>Buy Now</Button>
                 </Box>
               </Stack>
 

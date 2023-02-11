@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 //import  from 'next/link';
 import Router from 'next/router';
-import { HStack, Link } from '@chakra-ui/react';
+import { HStack, Link, Stack } from '@chakra-ui/react';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import Image from 'next/image';
+import UserAvatar from 'react-user-avatar';
+import { Show, Hide } from '@chakra-ui/react'
 
 const DropDownSearch = (props) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +68,7 @@ const DropDownSearch = (props) => {
                         const productList = products.data.products.edges;
 
                         options = productList.map((i) => ({
-                            avatar_url: i.node.images.edges[0].node.originalSrc,
+                            avatar_url: i.node.images.edges.length ? i.node.images.edges[0].node.originalSrc : '',
                             id: i.node.id,
                             login: i.node.title,
                             handle: i.node.handle
@@ -74,6 +76,7 @@ const DropDownSearch = (props) => {
 
                         resolve("done");
                     }).catch(error => {
+                        console.log(error);
                         reject("error");
                         throw new Error("Products not fetched");
                     })
@@ -122,20 +125,75 @@ const DropDownSearch = (props) => {
     const renderMenuItems = (option, props) => {
         return (
             <HStack key={option.id} onClick={handleLinkClick} handle={option.handle} onKeyDown={handleLinkClick} >
-                <Image
-                    alt={option.login}
-                    src={option.avatar_url}
-                    style={{
-                        height: '75px',
-                        marginRight: '10px',
-                        width: '75px',
-                    }}
-                    width= '75px'
-                    height= '75px'
-                    className='basis-3/4'
-                    handle={option.handle}
-                />
-                <span className='basis-1/4 my-auto' handle={option.handle}>{option.login}</span>
+                {/* Mobile Section */}
+                <Show below='md'>
+                    <Stack className='basis-1/2'>
+                    {option.avatar_url ? 
+                        <Image
+                        alt={option.login}
+                        src={option.avatar_url}
+                        style={{
+                            height: '75px',
+                            marginRight: '10px',
+                            width: '75px',
+                        }}
+                        width= '75px'
+                        height= '75px'
+                        handle={option.handle}
+                        />
+                        : 
+                        <Image
+                            alt={option.login}
+                            src={'https://img.icons8.com/bubbles/100/null/no-image.png'}
+                            style={{
+                                height: '75px',
+                                marginRight: '10px',
+                                width: '75px',
+                            }}
+                            width= '75px'
+                            height= '75px'
+                            handle={option.handle}
+                        />
+                    }
+                    </Stack>
+                    
+                    <span className='basis-1/2 my-auto' handle={option.handle}>{option.login}</span>
+                </Show>
+
+                {/* Desktop Section */}
+                <Show above='md'>
+                    {option.avatar_url ? 
+                        <Image
+                        alt={option.login}
+                        src={option.avatar_url}
+                        style={{
+                            height: '75px',
+                            marginRight: '10px',
+                            width: '75px',
+                        }}
+                        width= '75px'
+                        height= '75px'
+                        className='basis-3/4'
+                        handle={option.handle}
+                        />
+                        : 
+                        <Image
+                            alt={option.login}
+                            src={'https://img.icons8.com/bubbles/100/null/no-image.png'}
+                            style={{
+                                height: '75px',
+                                marginRight: '10px',
+                                width: '75px',
+                            }}
+                            width= '75px'
+                            height= '75px'
+                            className='basis-3/4'
+                            handle={option.handle}
+                        />
+                    }
+                    
+                    <span className='basis-1/4 my-auto' handle={option.handle}>{option.login}</span>
+                </Show>
             </HStack>
         )
     }

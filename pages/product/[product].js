@@ -45,6 +45,7 @@ const ProductDetailPage = ({product}) => {
                     height={"500px"}
                     src={productImages[0] ? productImages[0] : "https://via.placeholder.com/500x500.png?text=No+Image"}
                     objectFit={"fill"}
+                    alt={"Product Image 1"}
                   />
                   {/* Second Image */}
                   <Image
@@ -52,6 +53,7 @@ const ProductDetailPage = ({product}) => {
                     height={"500px"}
                     src={productImages[1] ? productImages[1] : "https://via.placeholder.com/500x500.png?text=No+Image"}
                     objectFit={"fill"}
+                    alt={"Product Image 2"}
                   /> 
                 </Box>
 
@@ -70,7 +72,7 @@ const ProductDetailPage = ({product}) => {
                   <Text marginBottom={['0%', '0%', '0%', '5%', '5%']} fontWeight={"semibold"} textAlign={['center','center','center','left','left']} textDecoration={"underline"} fontSize={'lg'}>Shop from</Text>
                   {buyNowLinks.map((link)=>{
                     return (
-                      <Stack marginBottom={['15%', '15%', '15%', '15%', '15%']} fontSize={'lg'} fontFamily={'body'} fontWeight={500} textAlign={['center','center','center','left','left']} cursor={'pointer'}>
+                      <Stack marginBottom={['15%', '15%', '15%', '15%', '15%']} fontSize={'lg'} fontFamily={'body'} fontWeight={500} textAlign={['center','center','center','left','left']} cursor={'pointer'} key={link}>
                         <Link href={link} isExternal >
                           {link.includes('www') ? link.split('/')[2].split('www.')[1] : link.split('/')[2]}
                         </Link>

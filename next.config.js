@@ -13,7 +13,7 @@ const nextConfig = {
     SECRET: 'I3J091HmiFN__FDb348NNJT_2Oqvkhf8PhoAC-Yt1avRPuRcBYEbonWADzdjWTrdlFZfath6ImgdNfDavj6upg'
   },
   images: {
-    domains: ['cdn.shopify.com','strapi-swatchback-deploy.herokuapp.com','oyster-app-vxwdi.ondigitalocean.app', 'img.icons8.com']
+    domains: ['cdn.shopify.com','strapi-swatchback-deploy.herokuapp.com','oyster-app-vxwdi.ondigitalocean.app', 'img.icons8.com', 'via.placeholder.com']
   }
 }
 

@@ -24,6 +24,13 @@ const customTheme = extendTheme({
                     lg: '10%'
                 }
             },
+            '.sb_container_wide_screen': {
+                px: {
+                    base: '0%',
+                    md: '2%',
+                    lg: '2%'
+                }
+            },
             '.template': {
                 mb: {
                     base: '30%',

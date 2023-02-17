@@ -1,12 +1,12 @@
 import React from "react";
 import Head from 'next/head';
 import Image from 'next/image';
-import { Box, Stack, Heading, Text, Button, Link } from "@chakra-ui/react";
+import { Box, Stack, Heading, Text} from "@chakra-ui/react";
 import { getProduct, recursiveCatalog } from "../../lib/shopify"
-//import Carousel from "../../components/Carousel";
 import ProductStrip from "../../components/ProductStrip";
 import { useFetchUser } from '../../lib/authContext';
 import Layout from '../../components/global/Layout';
+//import Carousel from "../../components/Carousel";
 
 const ProductDetailPage = ({product}) => {
 
@@ -29,13 +29,21 @@ const ProductDetailPage = ({product}) => {
 
     return (
         <Layout user={user}>
+            <style jsx>{`
+              .sb-external-link {
+                display: flex;
+                float:left;
+                color: 'gray.800'
+              }
+            `}
+            </style>
             <Box className="sb_container_wide_screen">
               <Head>
                 <title>{product.title} - SwatchBack</title>
               </Head>
-              <Stack direction={['column', 'column', 'row', 'row', 'row']} mt={'2%'} padding={'2%'} backgroundColor={'#FFF4EB'}>
+              <Stack direction={['column', 'column', 'row', 'row', 'row']} mt={'2%'} padding={'2%'} backgroundColor={'#FFF4EB'} >
                 {/* Hero Product Image */}
-                <Box width={['100%','100%','40%','40%','40%']} mt={'2%'} position={'relative'} display={'flex'} flexDirection='row'>
+                <Box width={['100%','100%','40%','40%','40%']} mt={'2%'} position={'relative'} display={'flex'} flexDirection='row' margin={['0']}>
                   {/*
                   <Carousel slides={productImages} type={"product"} />
                   */}
@@ -59,23 +67,38 @@ const ProductDetailPage = ({product}) => {
 
                 {/* Hero Product Description */}
                 <Box width={['100%','100%','40%','40%','40%']} paddingLeft={['0%', '0%', '2%', '2%', '2%']} paddingRight={['0%', '0%', '2%', '2%', '2%']}>
+                  {/*
                   <Text textAlign={["center", "center", "left", "left", "left"]} mt={6}>Search Results for:</Text>
-                  <Heading as="h2" size="lg" mb={2} textAlign={["center", "center", "left", "left", "left"]}>
+                  */}
+                  <Heading as="h2" size="lg" mb={2} textAlign={["center", "center", "left", "left", "left"]} fontSize={"2xl"} color={"#167AFF"}>
                     {product.title}
                   </Heading>
                   <Text textAlign={["center", "center", "left", "left", "left"]}>by &quot;{product.vendor}&quot;</Text>
-                  <Text mt={"2%"} textAlign={["center", "center", "left", "left", "left"]}>{product.description}</Text>
+                  <Text mt={"2%"} textAlign={["center", "center", "left", "left", "left"]} fontSize={'md'}>{product.description}</Text>
                 </Box>
 
                 {/* Hero Product Buy Button */}
-                <Box width={['100%','100%','20%','20%','20%']} borderLeft={['none', 'none', '2px solid #979797', '2px solid #979797', '2px solid #979797']} marginLeft={['0%', '0%', '3%', '3%', '3%']} paddingLeft={['0%', '0%', '3%', '3%', '3%'] } alignContent={["center"]}>
+                <Box width={['100%','100%','20%','20%','20%']} borderLeft={['none', 'none', '1px solid #979797', '1px solid #979797', '1px solid #979797']} marginLeft={['0%', '0%', '3%', '3%', '3%']} paddingLeft={['0%', '0%', '3%', '3%', '3%'] } alignContent={["center"]}>
+                  {/* 
                   <Text marginBottom={['0%', '0%', '0%', '5%', '5%']} fontWeight={"semibold"} textAlign={['center','center','center','left','left']} textDecoration={"underline"} fontSize={'lg'}>Shop from</Text>
+                  */}
                   {buyNowLinks.map((link)=>{
                     return (
-                      <Stack marginBottom={['15%', '15%', '15%', '15%', '15%']} fontSize={'lg'} fontFamily={'body'} fontWeight={500} textAlign={['center','center','center','left','left']} cursor={'pointer'} key={link}>
-                        <Link href={link} isExternal >
-                          {link.includes('www') ? link.split('/')[2].split('www.')[1] : link.split('/')[2]}
-                        </Link>
+                      <Stack marginBottom={['5%', '5%', '5%', '10%', '10%']} fontSize={'lg'} fontFamily={'body'} textAlign={['center','center','center','left','left']} cursor={'pointer'} key={link} textDecoration={"none"} textTransform={"capitalize"} color={'gray.800'} flexDirection={'row'}>
+                        <a href={link} textDecoration={"none"} target={"_blank"} color={'gray.800'} className={'sb-external-link'}>
+                            <Stack marginRight={['1%', '1%', '1%', '3%', '3%']}>
+                              <Text fontSize={'md'}>
+                                {link.includes('www') ? link.split('/')[2].split('www.')[1] : link.split('/')[2]}
+                              </Text>
+                            </Stack>
+                            <Stack marginTop={['3%', '3%', '3%', '3%', '3%']}>
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                              width="20" height="20"
+                              viewBox="0 0 30 30">
+                              <path d="M 25.980469 2.9902344 A 1.0001 1.0001 0 0 0 25.869141 3 L 20 3 A 1.0001 1.0001 0 1 0 20 5 L 23.585938 5 L 13.292969 15.292969 A 1.0001 1.0001 0 1 0 14.707031 16.707031 L 25 6.4140625 L 25 10 A 1.0001 1.0001 0 1 0 27 10 L 27 4.1269531 A 1.0001 1.0001 0 0 0 25.980469 2.9902344 z M 6 7 C 4.9069372 7 4 7.9069372 4 9 L 4 24 C 4 25.093063 4.9069372 26 6 26 L 21 26 C 22.093063 26 23 25.093063 23 24 L 23 14 L 23 11.421875 L 21 13.421875 L 21 16 L 21 24 L 6 24 L 6 9 L 14 9 L 16 9 L 16.578125 9 L 18.578125 7 L 16 7 L 14 7 L 6 7 z"></path>
+                              </svg>
+                            </Stack>
+                        </a>
                       </Stack>
                     );
                   })}
@@ -84,11 +107,11 @@ const ProductDetailPage = ({product}) => {
 
               {/* Recommended Products */}
               {
-                product.collections.edges[0] ?
+                product.recomendedProducts ?
                   (
                     <ProductStrip 
                       title={"Recommended Products"}
-                      products={product.collections.edges[0].node.products.edges}
+                      products={product.recomendedProducts.references.edges}
                       className={'productStrip'}
                     />
                   ) :

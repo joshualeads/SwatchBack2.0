@@ -85,7 +85,7 @@ const ProductDetailPage = ({product}) => {
                   {buyNowLinks.map((link)=>{
                     return (
                       <Stack marginBottom={['5%', '5%', '5%', '10%', '10%']} fontSize={'lg'} fontFamily={'body'} textAlign={['center','center','center','left','left']} cursor={'pointer'} key={link} textDecoration={"none"} textTransform={"capitalize"} color={'gray.800'} flexDirection={'row'}>
-                        <a href={link} textDecoration={"none"} target={"_blank"} color={'gray.800'} className={'sb-external-link'}>
+                        <a href={link} textDecoration={"none"} target={"_blank"} color={'gray.800'} className={'sb-external-link'} rel={"noopener noreferrer"}>
                             <Stack marginRight={['1%', '1%', '1%', '3%', '3%']}>
                               <Text fontSize={'md'}>
                                 {link.includes('www') ? link.split('/')[2].split('www.')[1] : link.split('/')[2]}

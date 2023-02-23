@@ -19,7 +19,7 @@ const RelatedProducts = ({ product }) => {
             buyNowLinks = JSON.parse(product.buynow.value);
             console.log(buyNowLinks);
         }
-    }
+    } 
 
     console.log('Related Product');
 

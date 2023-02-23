@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Box, Stack, Heading, Text} from "@chakra-ui/react";
 import { getProduct, recursiveCatalog } from "../../lib/shopify"
-import ProductStrip from "../../components/ProductStrip";
 import { useFetchUser } from '../../lib/authContext';
 import Layout from '../../components/global/Layout';
 import RelatedProducts from "./RelatedProducts";
@@ -14,7 +13,7 @@ const ProductDetailPage = ({product}) => {
     const productImages = [];
     let buyNowLinks = [];
 
-    if(product.images) {
+    if(product.images.edges) {
       product.images.edges.map((image) => {
         productImages.push(image.node.originalSrc);
       });

@@ -6,7 +6,7 @@ import { getProduct, recursiveCatalog } from "../../lib/shopify"
 import ProductStrip from "../../components/ProductStrip";
 import { useFetchUser } from '../../lib/authContext';
 import Layout from '../../components/global/Layout';
-//import Carousel from "../../components/Carousel";
+import RelatedProducts from "./RelatedProducts";
 
 const ProductDetailPage = ({product}) => {
 
@@ -41,7 +41,7 @@ const ProductDetailPage = ({product}) => {
               <Head>
                 <title>{product.title} - SwatchBack</title>
               </Head>
-              <Stack direction={['column', 'column', 'row', 'row', 'row']} mt={'2%'} padding={'2%'} backgroundColor={'#FFF4EB'} >
+              <Stack direction={['column', 'column', 'row', 'row', 'row']} mt={'2%'} padding={'2%'} backgroundColor={'#FFF8EB'} >
                 {/* Hero Product Image */}
                 <Box width={['100%','100%','40%','40%','40%']} mt={'2%'} position={'relative'} display={'flex'} flexDirection='row' margin={['0']}>
                   {/*
@@ -84,7 +84,7 @@ const ProductDetailPage = ({product}) => {
                   */}
                   {buyNowLinks.map((link)=>{
                     return (
-                      <Stack marginBottom={['5%', '5%', '5%', '10%', '10%']} fontSize={'lg'} fontFamily={'body'} textAlign={['center','center','center','left','left']} cursor={'pointer'} key={link} textDecoration={"none"} textTransform={"capitalize"} color={'gray.800'} flexDirection={'row'}>
+                      <Stack marginBottom={['3%', '3%', '3%', '10%', '10%']} fontSize={'2xl'} fontFamily={'body'} textAlign={['center','center','center','left','left']} cursor={'pointer'} key={link} textDecoration={"none"} textTransform={"capitalize"} color={'gray.800'} fontWeight={700} flexDirection={'row'} justifyContent={['center', 'center', 'center', 'left', 'left']}>
                         <a href={link} textDecoration={"none"} target={"_blank"} color={'gray.800'} className={'sb-external-link'} rel={"noopener noreferrer"}>
                             <Stack marginRight={['1%', '1%', '1%', '3%', '3%']}>
                               <Text fontSize={'md'}>
@@ -105,19 +105,18 @@ const ProductDetailPage = ({product}) => {
                 </Box>
               </Stack>
 
-              {/* Recommended Products */}
+              {/* Related Products */}
               {
-                product.recomendedProducts ?
+                product.recomendedProducts.references.edges ?
                   (
-                    <ProductStrip 
-                      title={"Recommended Products"}
-                      products={product.recomendedProducts.references.edges}
-                      className={'productStrip'}
-                    />
+                    product.recomendedProducts.references.edges.map((prod)=>{
+                      return <RelatedProducts key={prod.node.id}
+                        product={prod.node}
+                      />
+                    })
                   ) :
                   <></>
               }
-              
             </Box>
         </Layout>
     )

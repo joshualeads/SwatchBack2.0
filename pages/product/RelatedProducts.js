@@ -7,7 +7,7 @@ const RelatedProducts = ({product}) => {
     const productImages = [];
     let buyNowLinks = [];
 
-    if (product.images) {
+    if (product.images) { 
         product.images.edges.map((image) => {
             productImages.push(image.node.originalSrc);
         });

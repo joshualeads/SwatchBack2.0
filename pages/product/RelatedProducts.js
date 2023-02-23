@@ -4,9 +4,10 @@ import { Box, Stack, Heading, Text } from "@chakra-ui/react";
 
 const RelatedProducts = ({ product }) => {
 
+    const productImages = [];
+    let buyNowLinks = [];
+    
     if (product) {
-        const productImages = [];
-        let buyNowLinks = [];
 
         if (product.images.edges) {
             product.images.edges.map((image) => {
